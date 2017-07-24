@@ -22,7 +22,7 @@ def fetchGoods(url, id, category):
 		'leftTotal': leftTotal,
 		'category': category
 	})
-	csv = 'name,price,shelledTotal,leftTotal\n'
+	csv = 'id,name,price,shelledTotal,leftTotal,category\n'
 	for goods in goodsArr:
 		csv += '%s,%s,%s,%s,%s,%s\n' % (id, goods.get('name'), goods.get('price'), goods.get('shelledTotal'), goods.get('leftTotal'), category)
 	f = open('result%s.csv' % helper.today(), 'wb')
@@ -62,7 +62,11 @@ if __name__ == '__main__':
 		f.close()
 		if csv != '':
 			csvRowArr = csv.split('\n')
+			isFirst = True
 			for csvRow in csvRowArr:
+				if isFirst:
+					isFirst = False
+					continue
 				csvData = csvRow.split(',')
 				goodsArr.append({
 					'id': csvData[0],
