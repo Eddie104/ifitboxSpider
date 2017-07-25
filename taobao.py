@@ -41,7 +41,7 @@ COOKIE = {
 if __name__ == '__main__':
 	csv = 'name,price,selledTotal\n'
 
-	namePattern = re.compile('\s[\w\s\-/\*]*</a>\s+<div class=\\\\"attribute')
+	namePattern = re.compile('\s[\w\s\-/\*\.]*</a>\s+<div class=\\\\"attribute')
 	pricePattern = re.compile('class=\\\\"c-price\\\\">\d+\.\d{2}\s*</span>')
 	selledPattern = re.compile('class=\\\\"sale-num\\\\">\d+</span>')
 	for page in range(1, 10):
