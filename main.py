@@ -16,6 +16,7 @@ def fetchGoods(url, id, category):
 
 	# print(name, price, shelledTotal, leftTotal)
 	goodsArr.append({
+		'id': id,
 		'name': name,
 		'price': price,
 		'shelledTotal': shelledTotal,
@@ -24,7 +25,7 @@ def fetchGoods(url, id, category):
 	})
 	csv = 'id,name,price,shelledTotal,leftTotal,category\n'
 	for goods in goodsArr:
-		csv += '%s,%s,%s,%s,%s,%s\n' % (id, goods.get('name'), goods.get('price'), goods.get('shelledTotal'), goods.get('leftTotal'), goods.get('category'))
+		csv += '%s,%s,%s,%s,%s,%s\n' % (goods.get('id'), goods.get('name'), goods.get('price'), goods.get('shelledTotal'), goods.get('leftTotal'), goods.get('category'))
 	f = open('result%s.csv' % helper.today(), 'wb')
 	# f.write(csv.decode('GB18030', 'ignore').encode('utf-8'))
 	f.write(csv.encode('utf-8'))
