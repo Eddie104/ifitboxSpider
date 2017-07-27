@@ -12,6 +12,9 @@ def now():
 def today(): 
 	return time.strftime('%Y-%m-%d', time.localtime(time.time()))
 
+def timeStr():
+	return time.strftime('%H:%M:%S', time.localtime(time.time()))
+
 def mkDir(path):
 	if not os.path.exists(path):
 		os.makedirs(path)
@@ -57,7 +60,7 @@ def downloadImg(url, imgPath):
 
 def get(url, cookies = {}, myHeaders = None, sleep = 0, returnType = 0):
 	if sleep > 0:
-		 time.sleep(sleep)
+		time.sleep(sleep)
 	print('[%s] get url => %s' % (now(), url))
 	global headers
 	response = requests.get(url, headers = myHeaders or headers, cookies = cookies)
