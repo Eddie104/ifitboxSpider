@@ -16,7 +16,11 @@ def fetchGoods(url, id, category, nowTime):
 	shelledTotal = pq('.blsale').text()
 	shelledTotal = pattern.findall(shelledTotal)[2]
 	leftTotal = pq('.option > span').text()
-	leftTotal = pattern.findall(leftTotal)[0]
+	arr = pattern.findall(leftTotal)
+	if arr and len(arr) > 0:
+		leftTotal = pattern.findall(leftTotal)[0]
+	else:
+		leftTotal = -1
 
 	goodsArr.append({
 		'id': id,
